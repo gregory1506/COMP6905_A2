@@ -1,4 +1,4 @@
-import mystorage
+from storage import mystorage
 from flask_table import Table, Col
 
 class RecieverTable(Table):
