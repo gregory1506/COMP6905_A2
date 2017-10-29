@@ -1,4 +1,4 @@
-import mystorage
+from storage import mystorage
 import datetime
 
 def loadeventsfrompath(path):
