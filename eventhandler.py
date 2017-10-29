@@ -1,4 +1,4 @@
-import mystorage
+from storage import mystorage
 from azure.storage.table import Entity
 import datetime
 import json
