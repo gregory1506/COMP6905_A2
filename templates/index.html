@@ -1,0 +1,70 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<div class="container">
+    <h2>Choose path to file with events</h2>
+    <form action="" method="post" role="form">
+        {{ form.csrf }}
+        <div class="form-group row">
+            <div class="col-xs-5">
+                <label for="name">Name:</label>
+                <input type="text" class="form-control" id="name" name="name" placeholder="What's the path of the file you ?">
+            </div>
+        </div>
+        <button type="submit" class="btn btn-success">Submit</button>
+    </form>
+    <br>
+    <br>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+
+    {% for message in messages %}
+    {% if "Error" not in message[1]: %}
+    <div class="alert alert-info">
+        <strong>Success! </strong> {{ message[1] }}
+    </div>
+    {% endif %}
+
+    {% if "Error" in message[1]: %}
+    <div class="alert alert-warning">
+        {{ message[1] }}
+    </div>
+    {% endif %}
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+
+</div>
+<br>
+<br>
+<hr>
+<div class="container">
+    <form action="" method="get">
+        <button type="submit" class="btn btn-success">Refresh</button>
+    </form>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="table-responsive col-md-6">
+            <h3>Most Recent Shot Entities</h3>
+            {{ shot|safe }}
+        </div>
+        <div class="table-responsive col-md-6">
+            <h3>Most Recent Reciever Entities</h3>
+            {{ rec|safe }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="table-responsive col-md-6">
+            <h3>Most Recent Trace Entities</h3>
+            {{ trc|safe }}
+        </div>
+        <div class="table-responsive col-md-6">
+            <h3>Entity Summary</h3>
+            {{ matv|safe }}
+        </div>
+    </div>
+</div>
+
+{% endblock %}
